@@ -7,7 +7,14 @@ import usersRoutes from "./api/users.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: "*",
+    allowedHeaders: "*",
+  })
+);
 app.use(express.json({ limit: "10mb" }));
 
 app.use("/api/transactions", transactionsRoutes);
